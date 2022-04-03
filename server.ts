@@ -13,7 +13,7 @@ app.use(morgan('tiny'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-const routes = require('./app/routes/routes');
+const routes = require('./app/routes/routes')(express.Router());
 
 app.use('/', routes);
 
