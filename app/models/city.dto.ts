@@ -9,7 +9,7 @@
  *          type: string
  *       lat:
  *          type: number
- *       long:
+ *       lon:
  *          type: number
  */
 export interface CityResponse {

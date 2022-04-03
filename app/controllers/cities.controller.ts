@@ -10,7 +10,7 @@ exports.findByName = (req, res) => {
                 return {
                     name: rawCity.name,
                     lat: rawCity.lat,
-                    long: rawCity.lon
+                    lon: rawCity.lon
                 }
             });
             return res.send(cities);
