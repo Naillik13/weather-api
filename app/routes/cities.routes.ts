@@ -23,6 +23,27 @@ module.exports = (router) => {
      *          schema:
      *            type: object
      *            $ref: '#/definitions/CityResponse'
+     *        400:
+     *          description: Malformed request.
+     *          schema:
+     *            type: object
+     *            properties:
+     *              message:
+     *                type: string
+     *        404:
+     *          description: Not found.
+     *          schema:
+     *            type: object
+     *            properties:
+     *              message:
+     *                type: string
+     *        500:
+     *          description: Internal error.
+     *          schema:
+     *            type: object
+     *            properties:
+     *              message:
+     *                type: string
      */
     router.get('/cities', cities.findByName);
 

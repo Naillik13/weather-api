@@ -12,6 +12,12 @@ exports.findByLocation = (req, res) => {
     cache.get('weather-' + req.query.lat + '-' + req.query.lon).then((weather) => {
         return res.send(weather);
     }).catch(() => {
+        if (!req.query.lat || !req.query.lon) {
+            return res.status(400).send({
+                message: "Les paramètres lat et lon sont obligatoires."
+            });
+        }
+
         request.get('https://api.openweathermap.org/data/2.5/onecall?lat=' + req.query.lat + '&lon=' + req.query.lon + '&appid=' + process.env.WEATHER_API_KEY + '&exclude=hourly,minutely&units=metric', function (err, response, body) {
             if (!err && response.statusCode === 200) {
                 const rawWeather = JSON.parse(body).daily;

@@ -31,6 +31,20 @@ module.exports = (router) => {
      *            items:
      *              type: object
      *              $ref: '#/definitions/DayWeather'
+     *        400:
+     *          description: Malformed request.
+     *          schema:
+     *            type: object
+     *            properties:
+     *              message:
+     *                type: string
+     *        500:
+     *          description: Internal error.
+     *          schema:
+     *            type: object
+     *            properties:
+     *              message:
+     *                type: string
      */
     router.get('/weather', weather.findByLocation);
 

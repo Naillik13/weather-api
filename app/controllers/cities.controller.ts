@@ -9,6 +9,12 @@ const cache = new CacheService(ttl);
 
 // Find a single city by n
 exports.findByName = (req, res) => {
+    if (!req.query.name) {
+        return res.status(400).send({
+            message: "Le paramètre name est obligatoire."
+        });
+    }
+
     cache.get('cities-' + req.query.name).then((cities) => {
         return res.send(cities);
     }).catch(() => {
